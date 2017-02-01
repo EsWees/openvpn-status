@@ -9,15 +9,20 @@ WORKDIR /var/www/html
 
 ## Ставим Web Server и всё остальное
 RUN yum install -y epel-release && yum update -y && yum install -y \
-		httpd \
-		git \
-		wget \
-	  python-ipaddr \
-		python-GeoIP \
-		python-humanize \
+        python-GeoIP \
+        python-ipaddr \
+        python-humanize \
+        python-bottle \
+        python-semantic_version \
+        httpd \
+        mod_wsgi \
+        git \
+        wget \
 	&& yum clean all
 
 RUN git clone https://github.com/furlongm/openvpn-monitor.git /var/www/html
+
+RUN echo "WSGIScriptAlias /openvpn-monitor /var/www/html/openvpn-monitor/openvpn-monitor.py" > /etc/httpd/conf.d/openvpn-monitor.conf
 
 COPY ./httpd.conf /etc/httpd/conf/httpd.conf
 
