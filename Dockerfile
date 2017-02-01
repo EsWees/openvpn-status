@@ -22,8 +22,6 @@ RUN yum install -y epel-release && yum update -y && yum install -y \
 
 RUN git clone https://github.com/furlongm/openvpn-monitor.git /var/www/html
 
-RUN echo "WSGIScriptAlias /openvpn-monitor /var/www/html/openvpn-monitor/openvpn-monitor.py" > /etc/httpd/conf.d/openvpn-monitor.conf
-
 COPY ./httpd.conf /etc/httpd/conf/httpd.conf
 
 CMD \
