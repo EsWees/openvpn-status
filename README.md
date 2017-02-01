@@ -74,6 +74,7 @@ site=True name
 #latitude=46.9397677
 #longitude=31.9505492
 maps=True
+datetime_format=%d/%m/%Y %H:%M:%S
 
 [True server]
 host=IP/FQDN
